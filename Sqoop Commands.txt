@@ -1,0 +1,188 @@
+Common Sqoop Commands
+
+--to check verison
+
+[rishabhtiwari2048gmail@ip-10-0-41-79 ~]$ sqoop version
+Warning: /opt/cloudera/parcels/CDH-6.3.2-1.cdh6.3.2.p0.1605554/bin/../lib/sqoop/../accumulo does not exist! Accumulo imports will fail.
+Please set $ACCUMULO_HOME to the root of your Accumulo installation.
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/opt/cloudera/parcels/CDH-6.3.2-1.cdh6.3.2.p0.1605554/jars/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/opt/cloudera/parcels/CDH-6.3.2-1.cdh6.3.2.p0.1605554/jars/log4j-slf4j-impl-2.8.2.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]
+21/03/02 03:15:12 INFO sqoop.Sqoop: Running Sqoop version: 1.4.7-cdh6.3.2
+Sqoop 1.4.7-cdh6.3.2
+git commit id 
+Compiled by jenkins on Fri Nov  8 05:55:29 PST 2019
+
+--to check list of Sqoop Commands
+
+[rishabhtiwari2048gmail@ip-10-0-41-79 ~]$ sqoop help
+Warning: /opt/cloudera/parcels/CDH-6.3.2-1.cdh6.3.2.p0.1605554/bin/../lib/sqoop/../accumulo does not exist! Accumulo imports will fail.
+Please set $ACCUMULO_HOME to the root of your Accumulo installation.
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/opt/cloudera/parcels/CDH-6.3.2-1.cdh6.3.2.p0.1605554/jars/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/opt/cloudera/parcels/CDH-6.3.2-1.cdh6.3.2.p0.1605554/jars/log4j-slf4j-impl-2.8.2.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]
+21/03/02 03:15:52 INFO sqoop.Sqoop: Running Sqoop version: 1.4.7-cdh6.3.2
+usage: sqoop COMMAND [ARGS]
+Available commands:
+  codegen            Generate code to interact with database records
+  create-hive-table  Import a table definition into Hive
+  eval               Evaluate a SQL statement and display the results
+  export             Export an HDFS directory to a database table
+  help               List available commands
+  import             Import a table from a database to HDFS
+  import-all-tables  Import tables from a database to HDFS
+  import-mainframe   Import datasets from a mainframe server to HDFS
+  job                Work with saved jobs
+  list-databases     List available databases on a server
+  list-tables        List available tables in a database
+  merge              Merge results of incremental imports
+  metastore          Run a standalone Sqoop metastore
+  version            Display version information
+See 'sqoop help COMMAND' for information on a specific command.
+
+--To get information about a particular sqoop command
+
+[rishabhtiwari2048gmail@ip-10-0-41-79 ~]$ sqoop help <command name>
+
+[rishabhtiwari2048gmail@ip-10-0-41-79 ~]$ sqoop help job
+Warning: /opt/cloudera/parcels/CDH-6.3.2-1.cdh6.3.2.p0.1605554/bin/../lib/sqoop/../accumulo does not exist! Accumulo imports will fail.
+Please set $ACCUMULO_HOME to the root of your Accumulo installation.
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/opt/cloudera/parcels/CDH-6.3.2-1.cdh6.3.2.p0.1605554/jars/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/opt/cloudera/parcels/CDH-6.3.2-1.cdh6.3.2.p0.1605554/jars/log4j-slf4j-impl-2.8.2.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]
+21/03/02 03:17:26 INFO sqoop.Sqoop: Running Sqoop version: 1.4.7-cdh6.3.2
+usage: sqoop job [GENERIC-ARGS] [JOB-ARGS] [-- [<tool-name>] [TOOL-ARGS]]
+Job management arguments:
+   --create <job-id>                          Create a new saved job
+   --delete <job-id>                          Delete a saved job
+   --exec <job-id>                            Run a saved job
+   --help                                     Print usage instructions
+   --list                                     List saved jobs
+   --meta-connect <jdbc-uri>                  Specify JDBC connect string
+                                              for the metastore
+   --meta-password <metastore-db-password>    Specify the password string
+                                              for the metastore
+   --meta-username <metastore-db-username>    Specify the username string
+                                              for the metastore
+   --show <job-id>                            Show the parameters for a
+                                              saved job
+   --verbose                                  Print more information while
+                                              working
+Generic Hadoop command-line arguments:
+(must preceed any tool-specific arguments)
+Generic options supported are:
+-conf <configuration file>        specify an application configuration file
+-D <property=value>               define a value for a given property
+-fs <file:///|hdfs://namenode:port> specify default filesystem URL to use, overrides 'fs.defaultFS' property from configurations.
+-jt <local|resourcemanager:port>  specify a ResourceManager
+-files <file1,...>                specify a comma-separated list of files to be copied to the map reduce cluster
+-libjars <jar1,...>               specify a comma-separated list of jar files to be included in the classpath
+-archives <archive1,...>          specify a comma-separated list of archives to be unarchived on the compute machines
+The general command line syntax is:
+command [genericOptions] [commandOptions]
+
+
+--import all the rows and columns from a table in hdfs
+
+
+[rishabhtiwari2048gmail@ip-10-0-41-79 ~]$ sqoop import --connect jdbc:mysql://sqoopdb.slbdh.cloudlabs.com/rishabhtiwari2048gmail --driver com.mysql.jdbc.Driver --username rishabhtiwari2048gmail 
+
+--import all the rows but only few columns
+
+[rishabhtiwari2048gmail@ip-10-0-41-79 ~]$ sqoop import --connect jdbc:mysql://sqoopdb.slbdh.cloudlabs.com/rishabhtiwari2048gmail --driver com.mysql.jdbc.Driver --username rishabhtiwari2048gmail -P --table airline_safety --columns "airline_name, avail_seat_km_per_week, incident_00_14, fatalities_00_14" --target-dir /user/rishabhtiwari2048gmail/sqoop_b -m 1
+
+--import all the columns but only few rows
+
+[rishabhtiwari2048gmail@ip-10-0-41-79 ~]$ sqoop import --connect jdbc:mysql://sqoopdb.slbdh.cloudlabs.com/rishabhtiwari2048gmail --driver com.mysql.jdbc.Driver --username rishabhtiwari2048gmail -P --table airline_safety --where "incident_85_99 >0 AND incident_00_14" --target-dir /user/rishabhtiwari2048gmail/sqoop_c -m 1
+
+--import few rows and few columns
+
+[rishabhtiwari2048gmail@ip-10-0-41-79 ~]$ sqoop import --connect jdbc:mysql://sqoopdb.slbdh.cloudlabs.com/rishabhtiwari2048gmail --driver com.mysql.jdbc.Driver --username rishabhtiwari2048gmail -P --table airline_safety --columns "airline_name, avail_seat_km_per_week, incident_00_14, fatalities_00_14" --where "incident_85_99 >0 AND incident_00_14" --target-dir /user/rishabhtiwari2048gmail/sqoop_d -m 1
+
+--Sqoop jobs
+
+--to create a job
+
+[rishabhtiwari2048gmail@ip-10-0-41-79 ~]$ sqoop job --create job1 -- import --connect jdbc:mysql://sqoopdb.slbdh.cloudlabs.com/rishabhtiwari2048gmail --driver com.mysql.jdbc.Driver --username rishabhtiwari2048gmail -P --table airline_safety --target-dir /user/rishabhtiwari2048gmail/sqoop_jobs -m 1
+
+--to see the list of jobs
+
+[rishabhtiwari2048gmail@ip-10-0-41-79 ~]$ sqoop job --list
+
+--to see the details of a job
+
+[rishabhtiwari2048gmail@ip-10-0-41-79 ~]$ sqoop job --show job1
+
+--to execute a job
+
+[rishabhtiwari2048gmail@ip-10-0-41-79 ~]$ sqoop job --exec job1
+
+--to delete a job
+
+[rishabhtiwari2048gmail@ip-10-0-41-79 ~]$ sqoop job --delete job1
+
+--to generate code for an operation
+
+[rishabhtiwari2048gmail@ip-10-0-41-79 ~]$ sqoop codegen --connect jdbc:mysql://sqoopdb.slbdh.cloudlabs.com/rishabhtiwari2048gmail --driver com.mysql.jdbc.Driver --username rishabhtiwari2048gmail -P --table airline_safety
+
+--to import all tables
+
+[rishabhtiwari2048gmail@ip-10-0-41-79 ~]$ sqoop import-all-tables --connect jdbc:mysql://sqoopdb.slbdh.cloudlabs.com/rishabhtiwari2048gmail --driver com.mysql.jdbc.Driver --username rishabhtiwari2048gmail -P  -m 1
+
+--if you want to list all the databases
+
+[rishabhtiwari2048gmail@ip-10-0-41-79 ~]$ sqoop list-databases --connect jdbc:mysql://sqoopdb.slbdh.cloudlabs.com/ --username rishabhtiwari2048gmail -P
+
+--if you want to list all the tables in the tables
+
+[rishabhtiwari2048gmail@ip-10-0-41-79 ~]$ sqoop list-tables --connect jdbc:mysql://sqoopdb.slbdh.cloudlabs.com/rishabhtiwari2048gmail --username rishabhtiwari2048gmail -P
+
+--if you want to import table definition into hive use create-hive-table. This command is useful when you want to create a hive table from SQL table and then import the data from HDFS to newly created hive table
+
+--Step 1: Import mysql table data in HDFS
+--Step 2: Create a hive table from mysql table using create-hive-table
+--Step 3: Import the data from HDFS to Hive table
+
+[rishabhtiwari2048gmail@ip-10-0-41-79 ~]$ sqoop create-hive-table --connect jdbc:mysql://sqoopdb.slbdh.cloudlabs.com/rishabhtiwari2048gmail --driver com.mysql.jdbc.Driver --username rishabhtiwari2048gmail -P --table airline_safety --fields-terminated-by ',' --lines-terminated-by '\n' --hive-table rishabh_airline_safety
+
+hive>load data inpath '/user/rishabhtiwari2048gmail/airline_safety' into table rishabh_airline_safety;
+
+--if you want to do all the 3 steps together
+
+[rishabhtiwari2048gmail@ip-10-0-41-79 ~]$ sqoop import --connect jdbc:mysql://sqoopdb.slbdh.cloudlabs.com/rishabhtiwari2048gmail --driver com.mysql.jdbc.Driver --username rishabhtiwari2048gmail -P --table airline_safety -m 1 --hive-import
+
+--if you want to execute queries from sqoop
+
+[rishabhtiwari2048gmail@ip-10-0-41-79 ~]$ sqoop eval --connect jdbc:mysql://sqoopdb.slbdh.cloudlabs.com/rishabhtiwari2048gmail --driver com.mysql.jdbc.Driver --username rishabhtiwari2048gmail -P --query "SELECT * FROM airline_safety LIMIT 5"
+
+--if you want to export data from HDFS to mysql database
+
+--Insert Mode
+
+[rishabhtiwari2048gmail@ip-10-0-42-218 ~]$ sqoop export --connect jdbc:mysql://sqoopdb.slbdh.cloudlabs.com/rishabhtiwari2048gmail --driver com.mysql.jdbc.Driver --username rishabhtiwari2048gmail -P --table drinks_2 --export-dir /user/rishabhtiwari2048gmail/drinks.csv -m 1
+
+--Update Mode
+[rishabhtiwari2048gmail@ip-10-0-42-218 ~]$ sqoop export --connect jdbc:mysql://sqoopdb.slbdh.cloudlabs.com/rishabhtiwari2048gmail --driver com.mysql.jdbc.Driver --username rishabhtiwari2048gmail -P --table drinks_2 --export-dir /user/rishabhtiwari2048gmail/drinks.csv -m 1 --update-key param2
+
+--Incremental import Append mode
+[rishabhtiwari2048gmail@ip-10-0-42-218 ~]$ sqoop import --connect jdbc:mysql://sqoopdb.slbdh.cloudlabs.com/rishabhtiwari2048gmail --driver com.mysql.jdbc.Driver --username rishabhtiwari2048gmail -P --table employee --target-dir /user/rishabhtiwari2048gmail/sqoop_demo -m 1 --incremental append --check-column id  --last-value 204
+
+--Incremental import LastModified mode
+
+--append
+
+[rishabhtiwari2048gmail@ip-10-0-42-218 ~]$ sqoop import --connect jdbc:mysql://sqoopdb.slbdh.cloudlabs.com/rishabhtiwari2048gmail --driver com.mysql.jdbc.Driver --username rishabhtiwari2048gmail -P --table demo --target-dir /user/rishabhtiwari2048gmail/sqoop_demo/demo -m 1 --incremental lastmodified --check-column entrydate --last-value "2021-02-09" --append
+
+--merge-key
+
+
+[rishabhtiwari2048gmail@ip-10-0-42-218 ~]$ sqoop import --connect jdbc:mysql://sqoopdb.slbdh.cloudlabs.com/rishabhtiwari2048gmail --driver com.mysql.jdbc.Driver --username rishabhtiwari2048gmail -P --table demo --target-dir /user/rishabhtiwari2048gmail/sqoop_demo/demo -m 1 --incremental lastmodified --check-column entrydate --last-value "2021-02-09" --merge-key id
+
+
+
